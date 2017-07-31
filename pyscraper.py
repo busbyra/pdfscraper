@@ -12,8 +12,12 @@ with open(book, 'rb') as pdfFileObj:
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     pageObj = pdfReader.getPage(page)
     print(pageObj.extractText())
-    
+    # The below writes to a file called test.txt and uses .encode().strip()
+    with open('test.txt', 'w+') as test:
+        test.write(pageObj.extractText().encode('utf-8').strip())
+        
     # This will show you the number of pages in the book
     pdfReader.numPages
     print(pdfReader.numPages)
+
 
